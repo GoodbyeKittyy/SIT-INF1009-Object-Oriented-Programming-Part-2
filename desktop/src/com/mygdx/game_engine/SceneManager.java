@@ -1,28 +1,24 @@
-// SceneManager.java
 package com.mygdx.game_engine;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SceneManager {
-    private Scene currentScene;
+    private List<Scene> scenes; // SceneManager aggregates Scene(s)
 
-    public void loadScene(Scene scene) {
-        if (currentScene != null) {
-            currentScene.dispose();
-        }
-        currentScene = scene;
+    public SceneManager() {
+        scenes = new ArrayList<>();
     }
 
-    public void render(SpriteBatch batch) {
-        if (currentScene != null) {
-            batch.draw(currentScene.getTexture(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        }
+    // Method to initialize SceneManager
+    public void init() {
+        // Initialize SceneManager without needing GameManager reference
     }
 
-    public void dispose() {
-        if (currentScene != null) {
-            currentScene.dispose();
-        }
+    // Method to add scene to SceneManager
+    public void addScene(Scene scene) {
+        scenes.add(scene);
     }
+
+    // Other methods related to scene management can be added here
 }

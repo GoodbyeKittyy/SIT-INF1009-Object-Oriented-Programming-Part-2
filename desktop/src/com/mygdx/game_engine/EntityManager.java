@@ -1,29 +1,22 @@
-// EntityManager.java
 package com.mygdx.game_engine;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EntityManager {
-    private Entities entities;
+    private List<Entities> entitiesList;
 
     public EntityManager() {
-        // Instantiate the Entities with an empty list
-        entities = new Entities(new ArrayList<>());
+        entitiesList = new ArrayList<>();
     }
 
-    // Method to create entities
-    public void createEntities() {
-        // Add entities to the Entities object
-        entities.createEntities();
+    public void addEntity(Entities entity) {
+        entitiesList.add(entity);
     }
 
-    // Getter for the Entities
-    public Entities getEntities() {
-        return entities;
+    public void removeEntity(Entities entity) {
+        entitiesList.remove(entity);
     }
 
-    // Method to dispose of resources
-    public void dispose() {
-        entities.dispose();
-    }
+    // You can add more methods for managing entities as needed
 }
