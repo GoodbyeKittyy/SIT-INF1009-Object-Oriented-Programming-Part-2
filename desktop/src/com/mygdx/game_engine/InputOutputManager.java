@@ -1,9 +1,10 @@
 // InputOutputManager.java
-package com.mygdx.game;
+package com.mygdx.game_engine;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.mygdx.game_layer.TexturedObject;
 
 public class InputOutputManager {
     private TexturedObject spaceship;

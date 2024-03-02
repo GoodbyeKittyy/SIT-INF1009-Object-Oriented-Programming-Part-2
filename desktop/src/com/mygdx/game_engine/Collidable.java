@@ -1,6 +1,7 @@
-package com.mygdx.game;
+package com.mygdx.game_engine;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.game_layer.ControlledEntity;
 
 public class Collidable implements ControlledEntity {
 

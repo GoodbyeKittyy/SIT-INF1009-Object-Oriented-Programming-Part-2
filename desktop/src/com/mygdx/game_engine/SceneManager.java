@@ -1,8 +1,7 @@
 // SceneManager.java
-package com.mygdx.game;
+package com.mygdx.game_engine;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class SceneManager {

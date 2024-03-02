@@ -1,10 +1,10 @@
-package com.mygdx.game;
+package com.mygdx.game_engine;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game_layer.TexturedObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Entities {

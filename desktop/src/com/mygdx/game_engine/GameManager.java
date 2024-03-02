@@ -1,10 +1,13 @@
-package com.mygdx.game;
+package com.mygdx.game_engine;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.game_layer.ControlledEntity;
+import com.mygdx.game_layer.PlayerControlManager;
+import com.mygdx.game_layer.TexturedObject;
 
 public class GameManager extends ApplicationAdapter {
     SpriteBatch batch;

@@ -1,8 +1,7 @@
 // EntityManager.java
-package com.mygdx.game;
+package com.mygdx.game_engine;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class EntityManager {
     private Entities entities;
