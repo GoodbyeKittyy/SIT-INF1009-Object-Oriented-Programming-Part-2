@@ -14,5 +14,8 @@ public abstract class Scene {
         batch.draw(backgroundTexture, 0, 0); // Assuming the background fills the whole screen
     }
 
+    public void dispose() {
+    }
+
     // Add other scene-related methods here
 }

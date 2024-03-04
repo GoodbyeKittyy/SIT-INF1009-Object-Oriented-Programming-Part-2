@@ -2,8 +2,8 @@ package com.mygdx.game_engine;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game_layer.PlayerControlManager;
 
@@ -15,43 +15,60 @@ public class GameManager extends Game {
     private SceneManager sceneManager;
     private InputOutputManager inputOutputManager;
     private SpriteBatch batch;
-    private Texture backgroundTexture;
-    private Music music; // Declare Music object
+    private Music music;
 
     @Override
     public void create() {
-        // Initialize your game here
+        batch = new SpriteBatch();
         inputOutputManager = new InputOutputManager();
-        playerControlManager = new PlayerControlManager(inputOutputManager); // Passing InputOutputManager instance to PlayerControlManager
+        playerControlManager = new PlayerControlManager(inputOutputManager);
         aiControlManager = new AIControlManager();
         entityManager = new EntityManager();
-        sceneManager = new SceneManager(); // Now SceneManager is instantiated within GameManager
-        batch = new SpriteBatch();
-        backgroundTexture = new Texture("Scenes/ArchaeoQuestWorlds_Logo.png");
+        sceneManager = new SceneManager();
 
-        // Load music file
+        // Initialize the start scene and add it to the scene manager
+        StartScene startScene = new StartScene();
+        sceneManager.addScene(startScene);
+        sceneManager.setCurrentScene(startScene);
+
+        // Load and play music
         music = Gdx.audio.newMusic(Gdx.files.internal("Music/Hey Kids Remake.WAV"));
-        music.setLooping(true); // Set music to loop
-        music.play(); // Play the music
+        music.setLooping(true);
+        music.play();
+
+        // Set up input processor to listen for touch input
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                // Switch to the MountainScene on any touch/click release
+                sceneManager.setCurrentScene(new MountainScene());
+                return true; // Return true to indicate the event was handled
+            }
+        });
     }
 
     @Override
     public void render() {
         super.render();
-        // Update and render your game here
+        // Render the current scene
         batch.begin();
-        batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Scene currentScene = sceneManager.getCurrentScene();
+        if (currentScene != null) {
+            currentScene.renderBackground(batch);
+        }
         batch.end();
     }
 
     @Override
     public void dispose() {
+        if (sceneManager.getCurrentScene() != null) {
+            sceneManager.getCurrentScene().dispose();
+        }
         batch.dispose();
-        backgroundTexture.dispose();
-        music.dispose(); // Dispose of music when no longer needed
+        music.dispose();
     }
 
-    // Getter method for SceneManager
+    // Getter for SceneManager for potential external use
     public SceneManager getSceneManager() {
         return sceneManager;
     }
